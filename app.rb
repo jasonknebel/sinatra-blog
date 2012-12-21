@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'slim'
-require 'sass'
 require 'json'
 
 require 'sinatra/activerecord'
