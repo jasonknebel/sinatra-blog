@@ -1,6 +1,7 @@
 require 'sinatra'
 require 'slim'
 require 'json'
+require 'uri'
 
 require 'sinatra/activerecord'
 
@@ -38,8 +39,7 @@ get '/log_in' do slim :log_in end
 
 
 configure :production do
-  require 'uri'
-  db = URI.parse(ENV['DATABASE_URL'])
+  db = URI(ENV['DATABASE_URL'])
 
     ActiveRecord::Base.establish_connection(
       :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
