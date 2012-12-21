@@ -33,7 +33,7 @@ post '/admin/new' do
     "You didn't enter something"
   else
     Post.create( title: params[:title], content: params[:content])
-    
+
     redirect '/admin'
   end
     
@@ -41,8 +41,3 @@ post '/admin/new' do
 end
 
 get '/log_in' do slim :log_in end
-
-
-get '/make' do
-  Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
-end
