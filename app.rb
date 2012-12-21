@@ -38,12 +38,7 @@ get '/log_in' do slim :log_in end
 
 
 configure :production do
-  db = ENV["DATABASE_URL"]
-  if db.match(/postgres:\/\/(.*):(.*)@(.*)\/(.*)/) 
-    username = $1
-    password = $2
-    hostname = $3
-    database = $4
+  db = URI.parse(ENV["DATABASE_URL"] || postgres://jason@localhost/blog_dev)
 
     ActiveRecord::Base.establish_connection(
       :adapter  => 'postgresql',
