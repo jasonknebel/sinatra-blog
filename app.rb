@@ -32,6 +32,25 @@ post '/admin/new' do "hello there" end
 get '/log_in' do slim :log_in end
 
 
-get '/make' do
-  Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
+# get '/make' do
+#   Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
+# end
+
+
+configure :production do
+  db = ENV["DATABASE_URL"]
+  if db.match(/postgres:\/\/(.*):(.*)@(.*)\/(.*)/) 
+    username = $1
+    password = $2
+    hostname = $3
+    database = $4
+
+    ActiveRecord::Base.establish_connection(
+      :adapter  => 'postgresql',
+      :host     => hostname,
+      :username => username,
+      :password => password,
+      :database => database
+    )
+  end
 end
