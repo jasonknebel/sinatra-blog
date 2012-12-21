@@ -32,19 +32,20 @@ post '/admin/new' do "hello there" end
 get '/log_in' do slim :log_in end
 
 
-# get '/make' do
-#   Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
-# end
+ get '/make' do
+   Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
+ end
 
 
 configure :production do
   db = URI.parse(ENV["DATABASE_URL"] || 'postgres://jason@localhost/blog_dev')
 
     ActiveRecord::Base.establish_connection(
-      :adapter  => 'postgresql',
-      :host     => hostname,
-      :username => username,
-      :password => password,
-      :database => database
+      :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+      :host     => db.host,
+      :username => db.user,
+      :password => db.password,
+      :database => db.path[1..-1],
+      :encoding => 'utf8'
     )
 end
