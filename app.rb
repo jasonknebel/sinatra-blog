@@ -27,7 +27,18 @@ end
 
 get '/new' do redirect '/admin/new' end
 get '/admin/new' do slim :new end
-post '/admin/new' do "hello there" end
+
+post '/admin/new' do 
+  if (params[:title].empty? || params[:content].empty?)
+    "You didn't enter something"
+  else
+    Post.create( title: params[:title], content: params[:content])
+    
+    redirect '/admin'
+  end
+    
+
+end
 
 get '/log_in' do slim :log_in end
 

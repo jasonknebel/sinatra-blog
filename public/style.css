@@ -5,3 +5,17 @@ h1 {
 header ul{
 
 }
+
+input {
+  display: block;
+  width: 400px;
+}
+
+.content input{
+  height: 200px;
+}
+
+.submit input{
+  width: 100px;
+  margin: 25px 0 0 0;
+}
