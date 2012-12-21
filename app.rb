@@ -33,11 +33,15 @@ post '/admin/new' do
     "You didn't enter something"
   else
     Post.create( title: params[:title], content: params[:content])
-
     redirect '/admin'
   end
-    
-
 end
+
+use Rack::MethodOverride
+
+delete '/admin' do
+  "something"
+end
+
 
 get '/log_in' do slim :log_in end

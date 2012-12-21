@@ -6,13 +6,15 @@ header ul{
 
 }
 
-input {
+.title input {
   display: block;
   width: 400px;
 }
 
 .content input{
   height: 200px;
+  display: block;
+  width: 400px;
 }
 
 .submit input{

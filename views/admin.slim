@@ -3,3 +3,7 @@ a href='new' New Post
 -for post in @posts
   h1= post.title
   p= post.content
+  p= post.id
+
+  form path='/' method='POST'
+    input.button name='_method' type='submit' value='Delete'
