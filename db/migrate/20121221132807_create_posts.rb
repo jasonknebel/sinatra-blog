@@ -1,8 +1,8 @@
 class CreatePosts < ActiveRecord::Migration
   def up
     create_table :posts do |t|
-      t.string :title
-      t.text :content
+      t.string   :title
+      t.text     :content
       t.datetime :created_at
       t.datetime :published_at
     end

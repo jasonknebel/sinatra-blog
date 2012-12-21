@@ -8,12 +8,9 @@ group :development do
   gem 'guard-livereload'
   gem 'rack-livereload'
   gem 'sinatra-reloader'
-  gem 'sqlite3'
 end
 
 gem 'activerecord'
 gem 'sinatra-activerecord'
 
-group :production do
-  gem 'pg'
-end
+gem 'pg'
