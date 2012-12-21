@@ -1,7 +1,6 @@
 require 'sinatra'
 require 'slim'
 require 'json'
-require 'uri'
 
 require 'sinatra/activerecord'
 
