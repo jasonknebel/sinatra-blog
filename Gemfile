@@ -12,5 +12,6 @@ end
 
 gem 'activerecord'
 gem 'sinatra-activerecord'
+gem 'json'
 
 gem 'pg'
