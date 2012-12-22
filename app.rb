@@ -38,10 +38,9 @@ post '/admin/new' do
 end
 
 use Rack::MethodOverride
-
-delete '/admin' do
-  "something"
+delete '/admin/:id' do
+  Post.find(params[:id]).destroy
+  redirect '/admin'
 end
-
 
 get '/log_in' do slim :log_in end
