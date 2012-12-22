@@ -25,12 +25,11 @@ get '/admin' do
   slim :admin
 end
 
-get '/new' do redirect '/admin/new' end
 get '/admin/new' do slim :new end
 
 post '/admin/new' do 
   if (params[:title].empty? || params[:content].empty?)
-    "You didn't enter something"
+    "You didn't enter something."
   else
     Post.create( title: params[:title], content: params[:content])
     redirect '/admin'
@@ -40,6 +39,16 @@ end
 use Rack::MethodOverride
 delete '/admin/:id' do
   Post.find(params[:id]).destroy
+  redirect '/admin'
+end
+
+post '/admin/edit/:id' do
+  @post = Post.find(params[:id])
+  slim :edit
+end
+
+put '/admin/edit/:id' do
+  Post.find(params[:id]).update_attributes(title: params[:edit_title], content: params[:edit_content])
   redirect '/admin'
 end
 

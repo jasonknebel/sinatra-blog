@@ -1,0 +1,10 @@
+form action='#{@post.id}' method='POST'
+  input type="hidden" name="_method" value="PUT"
+  .title
+    label Title
+    input type='text' name='edit_title' value="#{@post.title}"
+  .content
+    label Content
+    input type='text' name='edit_content' value="#{@post.content}"
+  .submit
+    input.button type='submit' value='Submit Changes'

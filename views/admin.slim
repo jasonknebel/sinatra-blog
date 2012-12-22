@@ -5,8 +5,9 @@ a href='new' New Post
   p= post.content
   p= post.id
 
-  / form path='/admin/delete/#{post.id}' method='POST'
-  /   input.button name='_method' type='submit' value='Delete'
-
   form action='/admin/#{post.id}' method='POST'
-    input.button name='_method' type='submit' value='Delete'
+    input type="hidden" name="_method" value="PUT"
+    input.button type='submit' value='Delete Me'
+
+  form action='/admin/edit/#{post.id}' method='POST'
+    input.button type='submit' value='Edit Me'
