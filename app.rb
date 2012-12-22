@@ -14,7 +14,10 @@ end
 class Post < ActiveRecord::Base
 end
 
-get '/' do slim :index end
+get '/' do 
+  @posts = Post.all
+  slim :index 
+end
 
 get '/posts' do
   Post.all.to_json
@@ -45,6 +48,11 @@ end
 post '/admin/edit/:id' do
   @post = Post.find(params[:id])
   slim :edit
+end
+
+put '/admin/publish/:id' do
+  Post.find(params[:id]).update_attributes(published_at: Time.now)
+  redirect '/admin'
 end
 
 put '/admin/edit/:id' do

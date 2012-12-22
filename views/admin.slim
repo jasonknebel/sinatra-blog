@@ -4,6 +4,13 @@ a href='new' New Post
   h1= post.title
   p= post.content
   p= post.id
+  -if post.published_at?
+    p Published #{post.published_at}
+  -else
+    form action='/admin/publish/#{post.id}' method='POST'
+      input type="hidden" name="_method" value="PUT"
+      input.button type='submit' value='Publish'
+
 
   form action='/admin/#{post.id}' method='POST'
     input type="hidden" name="_method" value="PUT"

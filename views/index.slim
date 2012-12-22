@@ -1,1 +1,6 @@
-h1 hello world!
+h2 here all the posts
+
+-for post in @posts
+  -if post.published_at?
+    h1= post.title
+    p= post.content
