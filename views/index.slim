@@ -3,4 +3,5 @@ h2 here all the posts
 -for post in @posts
   -if post.published_at?
     h1= post.title
+    p= post.published_at.to_date
     p= post.content
