@@ -1,23 +1,15 @@
 h1 {
-  color: #0000aa;
-}
-
-header ul{
-
-}
+  color: #654321; }
 
 .title input {
   display: block;
-  width: 400px;
-}
+  width: 400px; }
 
-.content input{
+.content input {
   height: 200px;
   display: block;
-  width: 400px;
-}
+  width: 400px; }
 
-.submit input{
+.submit input {
   width: 100px;
-  margin: 25px 0 0 0;
-}
+  margin: 25px 0 0 0; }
