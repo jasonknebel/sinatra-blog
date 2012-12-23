@@ -82,10 +82,11 @@ end
 
 
 configure :production do
-  db = URI(ENV['DATABASE_URL'])
+  p = URI::Parser.new()
+  db = p.parse(ENV['DATABASE_URL'])
 
   ActiveRecord::Base.establish_connection(
-    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :adapter  => == 'postgres' ? 'postgresql' : db.scheme,
     :host     => db.host,
     :port     => db.port,
     :username => db.user,
