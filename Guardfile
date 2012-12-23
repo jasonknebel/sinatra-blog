@@ -1,5 +1,5 @@
 guard 'livereload' do
   watch(%r{.+\.rb})
   watch(%r{views/.+\.(erb|haml|slim)$})
-  watch(%r{public/.+\.(css|js|html|scss)$})
+  watch(%r{public/.+\.(css|js|html|sass)$})
 end

@@ -1,5 +1,37 @@
-a href='new' New Post
+.admin
+  .top
+    h2 Look at all the posts!
 
--for post in @posts
-  h1= post.title
-  p= post.content
+    .new
+      form action='/admin/new' method='POST'
+        input.button type='submit' value='New Post'
+  .list_all
+    table
+      th Title
+      th Content
+      th Published
+      th Edit
+      th Delete
+      -for post in @posts
+        tr
+          td
+            p= post.title
+          td
+            p= post.content
+          td
+            -if post.published_at?
+              p #{post.published_at.to_date}
+              td
+            -else
+              form action='/admin/publish/#{post.id}' method='POST'
+                input type="hidden" name="_method" value="PUT"
+                input.button type='submit' value='Publish'
+              td
+                form action='/admin/edit/#{post.id}' method='POST'
+                  input.button type='submit' value='Edit Me'
+
+          td
+            form action='/admin/#{post.id}' method='POST'
+              input type="hidden" name="_method" value="DELETE"
+              input.button type='submit' value='Delete Me'
+
