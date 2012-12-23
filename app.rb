@@ -1,6 +1,8 @@
 require 'sinatra'
 require 'slim'
 require 'json'
+require 'active_record'
+require 'uri'
 
 require 'sinatra/activerecord'
 
@@ -80,16 +82,17 @@ end
 
 
 configure :production do
-  db = URI.parse(ENV['DATABASE_URL'])
+  db = URI.parse(ENV['DATABASE_URL'] || 'postgres://jason@localhost/blog_dev')
 
-    ActiveRecord::Base.establish_connection(
-      :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-      :host     => db.host,
-      :username => db.user,
-      :password => db.password,
-      :database => db.path[1..-1],
-      :encoding => 'utf8'
-    )
+  ActiveRecord::Base.establish_connection(
+    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     => db.host,
+    :port     => db.port,
+    :username => db.user,
+    :password => db.password,
+    :database => db.path[1..-1],
+    :encoding => 'utf8'
+  )
 end 
 
 put '/admin/edit/:id' do
