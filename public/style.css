@@ -1,28 +1,86 @@
 header {
-  background: url("images/green_dust_scratch.png"); }
+  background: url("images/pool_table.png");
+  height: 32px;
+  margin: 0;
+  padding: 18px 0 0 0;
+  border-bottom: 5px solid #3d352a; }
+  header .left {
+    display: block;
+    float: left; }
   header .right {
+    display: block;
     float: right; }
+  header a {
+    text-decoration: none;
+    color: white; }
+    header a:hover {
+      text-decoration: underline; }
 
 body {
-  font-family: Helvetica; }
+  font-family: Helvetica;
+  background: url("images/bedge_grunge.png");
+  margin: 0; }
+
+.admin input.button {
+  background-color: #b0dfc1;
+  border-radius: 5px;
+  padding: 5px; }
+  .admin input.button:hover {
+    background-color: #2b6842; }
+.admin .top {
+  display: block;
+  overflow: auto;
+  margin: 10px 0 10px 0; }
+  .admin .top h2 {
+    float: left; }
+  .admin .top .new {
+    float: right; }
+    .admin .top .new input.button {
+      background-color: #b0dfc1;
+      font-size: 1.3em;
+      margin: 15px 7px 0 0;
+      width: 150px;
+      border: 2px solid #3d352a;
+      border-radius: 5px;
+      padding: 5px; }
+      .admin .top .new input.button:hover {
+        background-color: #2b6842; }
+.admin .list_all table tr {
+  background-color: ghostwhite; }
+.admin .list_all input.button {
+  font-size: 0.7em;
+  width: 70px;
+  border: 1px solid #3d352a; }
 
 .container {
-  max-width: 960px; }
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: auto; }
+
+.all_content {
+  display: block;
+  min-height: 650px; }
+
+.post {
+  background-color: ghostwhite;
+  margin: 0 0 30px 0;
+  padding: 5px;
+  border-radius: 7px; }
+  .post .title h2 {
+    margin: 0; }
+  .post .date {
+    font-style: italic;
+    font-size: 0.8em; }
+    .post .date p {
+      margin: 7px 0 0 0; }
+  .post .content {
+    padding: 0 20px 0 20px;
+    font-size: 1.1em; }
 
 footer {
-  background-color: #aaffff; }
-
-h1 {
-  font-size: 1em; }
-
-h2 {
-  font-size: 1em; }
-
-h3 {
-  font-size: 1em; }
-
-p {
-  font-size: 1em; }
+  background: url("images/pool_table.png");
+  border-top: 5px solid #3d352a;
+  height: 50px; }
 
 .title input {
   display: block;

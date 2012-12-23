@@ -1,36 +1,108 @@
-header
-  background: url('images/green_dust_scratch.png')
+$bordercolor: #3D352A
+$borderimage: url('images/pool_table.png')
+$offwhite: rgb(248,248,255)
+$green: rgb(43, 104, 66)
+$lightgreen: rgb(176,223,193)
 
+header
+  background: $borderimage
+  height: 32px
+  margin: 0
+  padding: 18px 0 0 0 
+  border-bottom: 5px solid $bordercolor
   .left
-    // display: inline
-    // float: left
+    display: block
+    float: left
 
   .right
-    // display: inline-block
+    display: block
     float: right
+  a 
+    text-decoration: none
+    color: #fff
+    &:hover
+      text-decoration: underline
 
 
 body
   font-family: Helvetica
+  background: url('images/bedge_grunge.png')
+  margin: 0
+
+.admin
+  input.button
+    background-color: $lightgreen
+    border-radius: 5px
+    padding: 5px
+    &:hover
+      background-color: $green
+
+  .top 
+    display: block
+    overflow: auto
+    margin: 10px 0 10px 0
+    h2
+      float: left
+    .new
+      float: right
+      input.button
+        background-color: $lightgreen
+        font-size: 1.3em
+        margin: 15px 7px 0 0 
+        width: 150px
+        border: 2px solid $bordercolor
+        border-radius: 5px
+        padding: 5px
+        &:hover
+          background-color: $green
+
+  .list_all
+    table
+      tr 
+        background-color: $offwhite
+      td
+    input.button
+      font-size: .7em
+      width: 70px
+      border: 1px solid $bordercolor
+
+
 
 .container
   max-width: 960px
+  margin: 0 auto
+  overflow: auto
+
+.all_content
+  display: block
+  min-height: 650px
+
+.post
+  background-color: $offwhite
+  margin: 0 0 30px 0 
+  padding: 5px
+  border-radius: 7px
+  .title
+    h2
+      margin: 0
+
+  .date
+    font-style: italic
+    font-size: .8em
+    p 
+      margin: 7px 0 0 0
+
+  .content
+    padding: 0 20px 0 20px
+    font-size: 1.1em
+
+
 
 
 footer
-  background-color: #aaffff
-
-h1
-  font-size: 1em
-h2
-  font-size: 1em
-h3
-  font-size: 1em
-p 
-  font-size: 1em
-
-
-
+  background: $borderimage
+  border-top: 5px solid $bordercolor
+  height: 50px
 
 .title input
   display: block

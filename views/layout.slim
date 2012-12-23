@@ -8,14 +8,14 @@ html
   header
     .container
       .left
-        a href='/' Home
+        a href='/' Blog
       .right
-        a href='/admin' Admin Panel
+        a href='/admin' admin
 
   body
     .container
-      == yield
+      .all_content
+        == yield
 
   footer
     .container
-      h3 footer
