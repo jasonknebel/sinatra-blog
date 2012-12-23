@@ -49,7 +49,7 @@ post '/admin/new' do
   slim :new 
 end
 
-post '/admin/new' do 
+put '/admin/new' do 
   if (params[:title].empty? || params[:content].empty?)
     "You didn't enter something."
   else

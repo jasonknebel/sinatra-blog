@@ -6,12 +6,16 @@ html
     link rel="stylesheet" href="/style.css"
 
   header
-    ul
-      li: a href='/' Home
-      li: a href='/admin' Admin Panel
+    .container
+      .left
+        a href='/' Home
+      .right
+        a href='/admin' Admin Panel
 
   body
-    == yield
+    .container
+      == yield
 
   footer
-    h3 footer
+    .container
+      h3 footer
