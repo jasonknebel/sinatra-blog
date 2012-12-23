@@ -4,7 +4,7 @@ require 'json'
 
 require 'sinatra/activerecord'
 
-if development?
+configure :development do
   set :database, 'postgres://jason@localhost/blog_dev'
   require 'rack-livereload'
   require 'sinatra/reloader'
@@ -74,7 +74,6 @@ put '/admin/publish/:id' do
   redirect '/admin'
 end
 
-<<<<<<< HEAD
  get '/make' do
    Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
  end
@@ -91,9 +90,9 @@ configure :production do
       :database => db.path[1..-1],
       :encoding => 'utf8'
     )
-=======
+end 
+
 put '/admin/edit/:id' do
   Post.find(params[:id]).update_attributes(title: params[:edit_title], content: params[:edit_content])
   redirect '/admin'
->>>>>>> master
 end
