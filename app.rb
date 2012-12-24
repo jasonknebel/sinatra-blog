@@ -82,16 +82,13 @@ end
 
 
 configure :production do
-  p = URI::Parser.new()
-  db = p.parse(ENV['DATABASE_URL'])
-
   ActiveRecord::Base.establish_connection(
-    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
-    :host     => db.host,
-    :port     => db.port,
-    :username => db.user,
-    :password => db.password,
-    :database => db.path[1..-1],
+    :adapter  => 'postgres',
+    :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
+    :port     => '5432',
+    :username => 'wuqpwjisgdpowf',
+    :password => '32MaQxPw9KuirG1lLyQheJbfBS',
+    :database => 'dem3n9jlpj5976',
     :encoding => 'utf8'
   )
 end 
