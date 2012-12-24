@@ -1,10 +1,12 @@
-form method='POST'
-  input type="hidden" name="_method" value="PUT"
-  .title
-    label Title
-    input type='text' name='title'
-  .content
-    label Content
-    input type='text' name='content'
-  .submit
-    input.button type='submit' value='Create'
+.new_edit_post
+  h1 New Post
+  form method='POST'
+    input type="hidden" name="_method" value="PUT"
+    .title
+      label Title
+      input type='text' name='title'
+    .content
+      label Content
+      textarea name='content'
+    .submit
+      input.button type='submit' value='Create'

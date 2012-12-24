@@ -36,21 +36,45 @@ body {
   .admin .top .new {
     float: right; }
     .admin .top .new input.button {
-      background-color: #b0dfc1;
       font-size: 1.3em;
       margin: 15px 7px 0 0;
       width: 150px;
-      border: 2px solid #3d352a;
-      border-radius: 5px;
-      padding: 5px; }
-      .admin .top .new input.button:hover {
-        background-color: #2b6842; }
+      border: 2px solid #3d352a; }
 .admin .list_all table tr {
   background-color: ghostwhite; }
 .admin .list_all input.button {
   font-size: 0.7em;
   width: 70px;
   border: 1px solid #3d352a; }
+
+.new_edit_post h1 {
+  border-bottom: 2px solid #3d352a; }
+.new_edit_post label {
+  font-size: 1.2em; }
+.new_edit_post .title input {
+  border: 1px solid #3d352a;
+  font-size: 1.3em;
+  display: block;
+  padding: 5px;
+  width: 948px; }
+.new_edit_post .content textarea {
+  border: 1px solid #3d352a;
+  font-size: 1.2em;
+  height: 400px;
+  display: block;
+  width: 954px;
+  max-width: 954px; }
+.new_edit_post .submit input.button {
+  float: right;
+  background-color: #b0dfc1;
+  border-radius: 5px;
+  padding: 5px;
+  font-size: 1.3em;
+  margin: 20px 0 0 0;
+  width: 150px;
+  border: 2px solid #3d352a; }
+  .new_edit_post .submit input.button:hover {
+    background-color: #2b6842; }
 
 .container {
   max-width: 960px;
@@ -81,16 +105,3 @@ footer {
   background: url("images/pool_table.png");
   border-top: 5px solid #3d352a;
   height: 50px; }
-
-.title input {
-  display: block;
-  width: 400px; }
-
-.content input {
-  height: 200px;
-  display: block;
-  width: 400px; }
-
-.submit input {
-  width: 100px;
-  margin: 25px 0 0 0; }

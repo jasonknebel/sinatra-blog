@@ -47,9 +47,13 @@ get '/admin' do
   slim :admin
 end
 
-post '/admin/new' do 
+get '/admin/new' do 
   slim :new 
 end
+
+# post '/admin/new' do 
+#   slim :new 
+# end
 
 put '/admin/new' do 
   if (params[:title].empty? || params[:content].empty?)
