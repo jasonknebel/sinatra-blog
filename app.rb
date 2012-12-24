@@ -33,7 +33,7 @@ helpers do
 end
 
 get '/' do 
-  @posts = Post.all
+  @posts = Post.find(:all, order: 'published_at DESC')
   slim :index 
 end
 
@@ -43,7 +43,7 @@ end
 
 get '/admin' do
   protected!
-  @posts = Post.all
+  @posts = Post.find(:all, order: 'published_at DESC, created_at DESC')
   slim :admin
 end
 

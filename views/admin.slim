@@ -20,7 +20,7 @@
             p= post.content
           td
             -if post.published_at?
-              p #{post.published_at.to_date}
+              p #{post.published_at}
               td
             -else
               form action='/admin/publish/#{post.id}' method='POST'
