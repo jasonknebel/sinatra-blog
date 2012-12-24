@@ -4,6 +4,7 @@ require 'json'
 require 'active_record'
 require 'uri'
 
+
 require 'sinatra/activerecord'
 
 configure :development do
@@ -27,7 +28,8 @@ helpers do
 
   def authorized?
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? && @auth.credentials && @auth.credentials == ['admin', 'admin']
+    @auth.provided? && @auth.basic? && @auth.credentials && 
+      @auth.credentials == ['admin', 'admin']
   end
 
 end
@@ -47,13 +49,9 @@ get '/admin' do
   slim :admin
 end
 
-get '/admin/new' do 
+post '/admin/new' do 
   slim :new 
 end
-
-# post '/admin/new' do 
-#   slim :new 
-# end
 
 put '/admin/new' do 
   if (params[:title].empty? || params[:content].empty?)
@@ -80,11 +78,6 @@ put '/admin/publish/:id' do
   redirect '/admin'
 end
 
- get '/make' do
-   Post.create(title: "Hello there!", content:"This is my content. Hope you like what I have to say: You look wonderful today!")
- end
-
-
 configure :production do
   ActiveRecord::Base.establish_connection(
     :adapter  => 'postgresql',
@@ -99,6 +92,7 @@ configure :production do
 end 
 
 put '/admin/edit/:id' do
-  Post.find(params[:id]).update_attributes(title: params[:edit_title], content: params[:edit_content])
+  Post.find(params[:id]).update_attributes(title: params[:edit_title], 
+    content: params[:edit_content])
   redirect '/admin'
 end
