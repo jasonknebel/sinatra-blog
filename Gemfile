@@ -14,6 +14,6 @@ end
 gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'json'
-gem 'activerecord-postgres-adapter'
+# gem 'activerecord-postgres-adapter'
 
 gem 'pg'
