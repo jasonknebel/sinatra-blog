@@ -89,7 +89,7 @@ configure :production do
     :username => 'wuqpwjisgdpowf',
     :password => '32MaQxPw9KuirG1lLyQheJbfBS',
     :database => 'dem3n9jlpj5976',
-    :encoding => 'unicode'
+    :encoding => 'unicode',
     :pool     => '5'
   )
 end 
