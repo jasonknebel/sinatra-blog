@@ -83,13 +83,14 @@ end
 
 configure :production do
   ActiveRecord::Base.establish_connection(
-    :adapter  => 'postgres',
+    :adapter  => 'postgresql',
     :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
     :port     => '5432',
     :username => 'wuqpwjisgdpowf',
     :password => '32MaQxPw9KuirG1lLyQheJbfBS',
     :database => 'dem3n9jlpj5976',
-    :encoding => 'utf8'
+    :encoding => 'unicode'
+    :pool     => '5'
   )
 end 
 
