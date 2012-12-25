@@ -19,3 +19,5 @@ gem 'redcarpet'
 gem 'rdiscount'
 
 gem 'pg'
+
+gem 'will_paginate'

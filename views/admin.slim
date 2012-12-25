@@ -34,4 +34,4 @@
             form action='/admin/#{post.id}' method='POST'
               input type="hidden" name="_method" value="DELETE"
               input.button type='submit' value='Delete Me'
-
+  p== will_paginate @posts 

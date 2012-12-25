@@ -1,11 +1,13 @@
 h3 welcome to my blog
 
 -for post in @posts
-  -if post.published_at?
-    .post
-      .title
-        h2= post.title
-      .date
-        p= post.published_at.to_date
-      .content
-        p== markdown(post.content)
+  / -if post.published_at?
+  .post
+    .title
+      h2= post.title
+    .date
+      / p= post.published_at.to_date
+    .content
+      p== markdown(post.content)
+
+p== will_paginate @posts 
