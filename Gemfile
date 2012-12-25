@@ -15,4 +15,7 @@ gem 'activerecord'
 gem 'sinatra-activerecord'
 gem 'json'
 
+gem 'redcarpet'
+gem 'rdiscount'
+
 gem 'pg'

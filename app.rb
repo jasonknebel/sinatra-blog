@@ -4,6 +4,7 @@ require 'json'
 require 'active_record'
 require 'uri'
 
+require 'redcarpet'
 
 require 'sinatra/activerecord'
 
@@ -30,6 +31,12 @@ helpers do
     @auth ||=  Rack::Auth::Basic::Request.new(request.env)
     @auth.provided? && @auth.basic? && @auth.credentials && 
       @auth.credentials == ['admin', 'admin']
+  end
+
+  def my_markdown(text)
+    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
+    markdown.render(text)
+
   end
 
 end
