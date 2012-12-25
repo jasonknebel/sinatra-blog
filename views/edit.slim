@@ -4,10 +4,9 @@
     input type="hidden" name="_method" value="PUT"
     .title
       label Title
-      input type='text' name='edit_title' value="#{@post.title}"
+      input type='text' name='edit_title' value='#{@post.title}'
     .content
       label Content
-      p change to textarea!
-      input type='text' name='edit_content' value="#{@post.content}"
+      textarea name='edit_content' #{@post.content}
     .submit
-      input.button type='submit' value='Submit Changes'
+      input.button type='submit' value='Submit'
