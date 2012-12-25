@@ -53,6 +53,7 @@ body
 
   .list_all
     table
+      margin-bottom: 30px
       tr 
         background-color: $offwhite
     input.button
@@ -121,6 +122,59 @@ body
   .content
     padding: 0 20px 0 20px
     font-size: 1.1em
+
+.pagination
+  $page_bradius: 6px
+  cursor: default
+  height: 22px
+  font-size: 1.1em
+  margin-bottom: 35px
+  text-align: center
+
+
+  a, span, em 
+    padding: 0.1em 0.7em
+    display: inline-block
+    // float: left
+    margin-right: 3px
+    background: $lightgreen
+
+  .disabled
+    display: none
+
+  .current
+    font-style: normal
+    font-weight: bold
+    background: $bordercolor
+    color: white
+    border-radius: $page_bradius
+    border: 1px solid black
+  a 
+    text-decoration: none
+    color: black
+    border: 1px solid black
+    border-radius: $page_bradius
+    &:hover, &:focus 
+      color: white 
+      background-color: $green
+    
+
+  // .page_info
+  //   background: #2e6ab1
+  //   color: white
+  //   padding: 0.4em 0.6em
+  //   width: 22em
+  //   margin-bottom: 0.3em
+  //   text-align: center
+  //   b 
+  //     color: #000033
+  //     background: #2e6ab1 + 60
+  //     padding: 0.1em 0.25em
+
+
+
+
+
 
 footer
   background: $borderimage

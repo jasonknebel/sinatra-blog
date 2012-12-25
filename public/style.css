@@ -40,8 +40,10 @@ body {
       margin: 15px 7px 0 0;
       width: 150px;
       border: 2px solid #3d352a; }
-.admin .list_all table tr {
-  background-color: ghostwhite; }
+.admin .list_all table {
+  margin-bottom: 30px; }
+  .admin .list_all table tr {
+    background-color: ghostwhite; }
 .admin .list_all input.button {
   font-size: 0.7em;
   width: 70px;
@@ -100,6 +102,35 @@ body {
   .post .content {
     padding: 0 20px 0 20px;
     font-size: 1.1em; }
+
+.pagination {
+  cursor: default;
+  height: 22px;
+  font-size: 1.1em;
+  margin-bottom: 35px;
+  text-align: center; }
+  .pagination a, .pagination span, .pagination em {
+    padding: 0.1em 0.7em;
+    display: inline-block;
+    margin-right: 3px;
+    background: #b0dfc1; }
+  .pagination .disabled {
+    display: none; }
+  .pagination .current {
+    font-style: normal;
+    font-weight: bold;
+    background: #3d352a;
+    color: white;
+    border-radius: 6px;
+    border: 1px solid black; }
+  .pagination a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 6px; }
+    .pagination a:hover, .pagination a:focus {
+      color: white;
+      background-color: #2b6842; }
 
 footer {
   background: url("images/pool_table.png");
