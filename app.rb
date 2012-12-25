@@ -4,6 +4,7 @@ require 'json'
 require 'active_record'
 require 'uri'
 
+require 'will_paginate'
 require 'will_paginate/active_record'
 
 require 'redcarpet'
