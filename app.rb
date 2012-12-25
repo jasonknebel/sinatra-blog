@@ -33,10 +33,9 @@ helpers do
       @auth.credentials == ['admin', 'admin']
   end
 
-  def my_markdown(text)
+  def markdown(text)
     markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
     markdown.render(text)
-
   end
 
 end

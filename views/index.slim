@@ -8,4 +8,4 @@ h3 welcome to my blog
       .date
         p= post.published_at.to_date
       .content
-        p= post.content
+        p== markdown(post.content)
