@@ -49,7 +49,7 @@ get '/admin' do
   slim :admin
 end
 
-post '/admin/new' do 
+post '/admin/new' do
   slim :new 
 end
 
