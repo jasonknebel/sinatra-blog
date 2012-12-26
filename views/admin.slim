@@ -5,6 +5,7 @@
     .new
       form action='/admin/new' method='POST'
         input.button type='submit' value='New Post'
+
   .list_all
     table
       th Title
@@ -21,6 +22,7 @@
           td
             -if post.published_at?
               p #{post.published_at}
+              /extra td since the admin cannot edit published posts
               td
             -else
               form action='/admin/publish/#{post.id}' method='POST'
@@ -34,4 +36,5 @@
             form action='/admin/#{post.id}' method='POST'
               input type="hidden" name="_method" value="DELETE"
               input.button type='submit' value='Delete Me'
+
   p== will_paginate @posts 

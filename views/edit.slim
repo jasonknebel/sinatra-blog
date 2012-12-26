@@ -1,13 +1,17 @@
 .new_edit_post
+
   h1 Edit Post
   form action='#{@post.id}' method='POST'
     input type="hidden" name="_method" value="PUT"
+
     .title
       label Title
       input type='text' name='edit_title' value='#{@post.title}'
+
     .content
       label Content
       textarea name='edit_content' #{@post.content}
+      
     .submit
       input.button type='submit' value='Submit'
 

@@ -1,2 +1,4 @@
 /public/.sass-cache
 deploy.sh
+Guardfile
+Gemfile.lock
