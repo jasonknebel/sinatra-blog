@@ -1,0 +1,9 @@
+h3 welcome to my blog
+
+.post
+  .title
+    h2= @post.title
+  .date
+    p= @post.published_at.to_date
+  .content
+    p== markdown(@post.content)
