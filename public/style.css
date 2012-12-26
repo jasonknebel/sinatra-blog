@@ -62,21 +62,23 @@ body {
 .new_edit_post .content textarea {
   border: 1px solid #3d352a;
   font-size: 1.2em;
-  height: 400px;
+  height: 380px;
   display: block;
   width: 954px;
   max-width: 954px; }
-.new_edit_post .submit input.button {
+.new_edit_post .submit input.button, .new_edit_post .back input.button {
   float: right;
   background-color: #b0dfc1;
   border-radius: 5px;
   padding: 5px;
   font-size: 1.3em;
-  margin: 20px 0 0 0;
+  margin: 30px 0 30px 0;
   width: 150px;
   border: 2px solid #3d352a; }
-  .new_edit_post .submit input.button:hover {
+  .new_edit_post .submit input.button:hover, .new_edit_post .back input.button:hover {
     background-color: #2b6842; }
+.new_edit_post .back {
+  float: left; }
 
 .container {
   max-width: 960px;
