@@ -41,6 +41,12 @@ helpers do
     markdown.render(text)
   end
 
+
+  def seo_title(text)
+    text.downcase.gsub(/[^a-z0-9]+/i, '-')
+  end
+
+
 end
 
 get '/' do 
@@ -104,4 +110,9 @@ put '/admin/edit/:id' do
   Post.find(params[:id]).update_attributes(title: params[:edit_title], 
     content: params[:edit_content])
   redirect '/admin'
+end
+
+get '/post/:id' do
+  @post = Post.find(params[:id])
+  slim :show
 end
