@@ -11,10 +11,13 @@ class Post < ActiveRecord::Base
 end
 
 use Rack::MethodOverride
-  #needed for more than just GET/POST requests
+
+# if you use heroku's (free) database, you should be able to remove
+# the prouction config block and leave this line
+database_url = ENV['DATABASE_URL'] || 'sqlite3:///db/blog_development.sqlite3'
 
 configure :development do
-  set :database, 'postgres://jason@localhost/blog_dev'
+  set :database, database_url
   require 'rack-livereload'
   require 'sinatra/reloader'
   use Rack::LiveReload
