@@ -23,6 +23,8 @@ configure :development do
   use Rack::LiveReload
 end
 
+# you can almose definitely delete this and pull the set :database line
+# out of the dev block
 configure :production do
   ActiveRecord::Base.establish_connection(
     :adapter  => 'postgresql',
