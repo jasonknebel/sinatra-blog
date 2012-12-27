@@ -1,11 +1,25 @@
-$bordercolor: #3D352A
-$borderimage: url('images/pool_table.png')
-$offwhite: rgb(248,248,255)
-$green: rgb(43, 104, 66)
-$lightgreen: rgb(176,223,193)
+$header_image:      url('images/pool_table.png')
+$bordercolor:       rgb(61,53,42)    //dark brown
+$post_bg_color:     rgb(248,248,255) //off white
+$button_face:       rgb(176,223,193) //light green
+$button_face_hover: rgb(43, 104, 66) //dark green
+
+body
+  font-family: Helvetica
+  background: url('images/bedge_grunge.png')
+  margin: 0
+
+.container
+  max-width: 960px
+  margin: 0 auto
+  overflow: auto
+
+.all_content
+  display: block
+  min-height: 650px
 
 header
-  background: $borderimage
+  background: $header_image
   height: 32px
   margin: 0
   padding: 18px 0 0 0 
@@ -19,23 +33,45 @@ header
     float: right
   a 
     text-decoration: none
-    color: #fff
+    color: white
     &:hover
       text-decoration: underline
 
+footer
+  background: $header_image
+  border-top: 5px solid $bordercolor
+  height: 50px
 
-body
-  font-family: Helvetica
-  background: url('images/bedge_grunge.png')
-  margin: 0
+//--------------------Blog_Home-------------------//
+
+.post
+  background-color: $post_bg_color
+  margin: 0 0 30px 0 
+  padding: 5px
+  border-radius: 7px
+  .title
+    h2
+      margin: 0
+
+  .date
+    font-style: italic
+    font-size: .8em
+    p 
+      margin: 7px 0 0 0
+
+  .content
+    padding: 0 20px 0 20px
+    font-size: 1.1em
+
+//--------------------Admin-------------------//
 
 .admin
   input.button
-    background-color: $lightgreen
+    background-color: $button_face
     border-radius: 5px
     padding: 5px
     &:hover
-      background-color: $green
+      background-color: $button_face_hover
 
   .top 
     display: block
@@ -55,11 +91,13 @@ body
     table
       margin-bottom: 30px
       tr 
-        background-color: $offwhite
+        background-color: $post_bg_color
     input.button
       font-size: .7em
       width: 70px
       border: 1px solid $bordercolor
+
+//--------------------New/Edit_Post-------------------//
 
 .new_edit_post
   h1
@@ -77,51 +115,26 @@ body
     textarea
       border: 1px solid $bordercolor
       font-size: 1.2em
-      height: 400px
+      height: 380px
       display: block
       width: 954px
       max-width: 954px
-  .submit
+  .submit, .back
     input.button
       float: right
-      background-color: $lightgreen
+      background-color: $button_face
       border-radius: 5px
       padding: 5px
       font-size: 1.3em
-      margin: 20px 0 0 0 
+      margin: 30px 0 30px 0 
       width: 150px
       border: 2px solid $bordercolor
       &:hover
-        background-color: $green
+        background-color: $button_face_hover
+  .back
+    float: left
 
-
-.container
-  max-width: 960px
-  margin: 0 auto
-  overflow: auto
-
-.all_content
-  display: block
-  min-height: 650px
-
-.post
-  background-color: $offwhite
-  margin: 0 0 30px 0 
-  padding: 5px
-  border-radius: 7px
-  .title
-    h2
-      margin: 0
-
-  .date
-    font-style: italic
-    font-size: .8em
-    p 
-      margin: 7px 0 0 0
-
-  .content
-    padding: 0 20px 0 20px
-    font-size: 1.1em
+//--------------------Pagination_Bar-------------------//
 
 .pagination
   $page_bradius: 6px
@@ -131,13 +144,19 @@ body
   margin-bottom: 35px
   text-align: center
 
-
   a, span, em 
     padding: 0.1em 0.7em
     display: inline-block
-    // float: left
     margin-right: 3px
-    background: $lightgreen
+    background: $button_face
+  a 
+    text-decoration: none
+    color: black
+    border: 1px solid black
+    border-radius: $page_bradius
+    &:hover, &:focus 
+      color: white 
+      background-color: $button_face_hover
 
   .disabled
     display: none
@@ -149,34 +168,3 @@ body
     color: white
     border-radius: $page_bradius
     border: 1px solid black
-  a 
-    text-decoration: none
-    color: black
-    border: 1px solid black
-    border-radius: $page_bradius
-    &:hover, &:focus 
-      color: white 
-      background-color: $green
-    
-
-  // .page_info
-  //   background: #2e6ab1
-  //   color: white
-  //   padding: 0.4em 0.6em
-  //   width: 22em
-  //   margin-bottom: 0.3em
-  //   text-align: center
-  //   b 
-  //     color: #000033
-  //     background: #2e6ab1 + 60
-  //     padding: 0.1em 0.25em
-
-
-
-
-
-
-footer
-  background: $borderimage
-  border-top: 5px solid $bordercolor
-  height: 50px

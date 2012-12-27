@@ -1,9 +1,5 @@
 source "http://rubygems.org"
 
-gem 'sinatra'
-gem 'slim'
-gem 'sass'
-
 group :development do
   gem 'guard'
   gem 'guard-livereload'
@@ -11,13 +7,10 @@ group :development do
   gem 'sinatra-reloader'
 end
 
-gem 'activerecord'
+gem 'sinatra'
 gem 'sinatra-activerecord'
-gem 'json'
-
+gem 'slim'
+gem 'will_paginate'
 gem 'redcarpet'
-gem 'rdiscount'
 
 gem 'pg'
-
-gem 'will_paginate'

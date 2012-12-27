@@ -1,15 +1,17 @@
 require 'sinatra'
+require 'sinatra/activerecord'
 require 'slim'
-require 'json'
-require 'active_record'
-require 'uri'
-
 require 'will_paginate'
 require 'will_paginate/active_record'
+require 'redcarpet' #markdown
 
-require 'redcarpet'
+#--------------------Setup--------------------#
 
-require 'sinatra/activerecord'
+class Post < ActiveRecord::Base
+end
+
+use Rack::MethodOverride
+  #needed for more than just GET/POST requests
 
 configure :development do
   set :database, 'postgres://jason@localhost/blog_dev'
@@ -18,8 +20,20 @@ configure :development do
   use Rack::LiveReload
 end
 
-class Post < ActiveRecord::Base
-end
+configure :production do
+  ActiveRecord::Base.establish_connection(
+    :adapter  => 'postgresql',
+    :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
+    :port     => '5432',
+    :username => 'wuqpwjisgdpowf',
+    :password => '32MaQxPw9KuirG1lLyQheJbfBS',
+    :database => 'dem3n9jlpj5976',
+    :encoding => 'unicode',
+    :pool     => '5'
+  )
+end 
+
+#--------------------Helpers--------------------#
 
 helpers do
 
@@ -37,8 +51,7 @@ helpers do
   end
 
   def markdown(text)
-    markdown = Redcarpet::Markdown.new(Redcarpet::Render::HTML)
-    markdown.render(text)
+    Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text)
   end
 
 
@@ -49,14 +62,14 @@ helpers do
 
 end
 
+#--------------------Routes--------------------#
+
 get '/' do 
   @posts = Post.where('published_at IS NOT NULL').order('published_at DESC').page(params[:page]).per_page(5)
   slim :index 
 end
 
-get '/posts_all' do
-  Post.all.to_json
-end
+#----------Admin----------#
 
 get '/admin' do
   protected!
@@ -64,7 +77,9 @@ get '/admin' do
   slim :admin
 end
 
-post '/admin/new' do 
+#-----New_Post-----#
+
+post '/admin/new' do
   slim :new 
 end
 
@@ -77,38 +92,30 @@ put '/admin/new' do
   end
 end
 
-use Rack::MethodOverride
-delete '/admin/:id' do
-  Post.find(params[:id]).destroy
-  redirect '/admin'
-end
+#-----Edit_Post-----#
 
 post '/admin/edit/:id' do
   @post = Post.find(params[:id])
   slim :edit
 end
 
-put '/admin/publish/:id' do
-  Post.find(params[:id]).update_attributes(published_at: Time.now)
-  redirect '/admin'
-end
-
-configure :production do
-  ActiveRecord::Base.establish_connection(
-    :adapter  => 'postgresql',
-    :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
-    :port     => '5432',
-    :username => 'wuqpwjisgdpowf',
-    :password => '32MaQxPw9KuirG1lLyQheJbfBS',
-    :database => 'dem3n9jlpj5976',
-    :encoding => 'unicode',
-    :pool     => '5'
-  )
-end 
-
 put '/admin/edit/:id' do
   Post.find(params[:id]).update_attributes(title: params[:edit_title], 
     content: params[:edit_content])
+  redirect '/admin'
+end
+
+#-----Delete_Post-----#
+
+delete '/admin/:id' do
+  Post.find(params[:id]).destroy
+  redirect '/admin'
+end
+
+#-----Publish_Post-----#
+
+put '/admin/publish/:id' do
+  Post.find(params[:id]).update_attributes(published_at: Time.now)
   redirect '/admin'
 end
 

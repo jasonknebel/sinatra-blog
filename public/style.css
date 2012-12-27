@@ -1,3 +1,17 @@
+body {
+  font-family: Helvetica;
+  background: url("images/bedge_grunge.png");
+  margin: 0; }
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+  overflow: auto; }
+
+.all_content {
+  display: block;
+  min-height: 650px; }
+
 header {
   background: url("images/pool_table.png");
   height: 32px;
@@ -16,10 +30,26 @@ header {
     header a:hover {
       text-decoration: underline; }
 
-body {
-  font-family: Helvetica;
-  background: url("images/bedge_grunge.png");
-  margin: 0; }
+footer {
+  background: url("images/pool_table.png");
+  border-top: 5px solid #3d352a;
+  height: 50px; }
+
+.post {
+  background-color: ghostwhite;
+  margin: 0 0 30px 0;
+  padding: 5px;
+  border-radius: 7px; }
+  .post .title h2 {
+    margin: 0; }
+  .post .date {
+    font-style: italic;
+    font-size: 0.8em; }
+    .post .date p {
+      margin: 7px 0 0 0; }
+  .post .content {
+    padding: 0 20px 0 20px;
+    font-size: 1.1em; }
 
 .admin input.button {
   background-color: #b0dfc1;
@@ -62,46 +92,23 @@ body {
 .new_edit_post .content textarea {
   border: 1px solid #3d352a;
   font-size: 1.2em;
-  height: 400px;
+  height: 380px;
   display: block;
   width: 954px;
   max-width: 954px; }
-.new_edit_post .submit input.button {
+.new_edit_post .submit input.button, .new_edit_post .back input.button {
   float: right;
   background-color: #b0dfc1;
   border-radius: 5px;
   padding: 5px;
   font-size: 1.3em;
-  margin: 20px 0 0 0;
+  margin: 30px 0 30px 0;
   width: 150px;
   border: 2px solid #3d352a; }
-  .new_edit_post .submit input.button:hover {
+  .new_edit_post .submit input.button:hover, .new_edit_post .back input.button:hover {
     background-color: #2b6842; }
-
-.container {
-  max-width: 960px;
-  margin: 0 auto;
-  overflow: auto; }
-
-.all_content {
-  display: block;
-  min-height: 650px; }
-
-.post {
-  background-color: ghostwhite;
-  margin: 0 0 30px 0;
-  padding: 5px;
-  border-radius: 7px; }
-  .post .title h2 {
-    margin: 0; }
-  .post .date {
-    font-style: italic;
-    font-size: 0.8em; }
-    .post .date p {
-      margin: 7px 0 0 0; }
-  .post .content {
-    padding: 0 20px 0 20px;
-    font-size: 1.1em; }
+.new_edit_post .back {
+  float: left; }
 
 .pagination {
   cursor: default;
@@ -114,6 +121,14 @@ body {
     display: inline-block;
     margin-right: 3px;
     background: #b0dfc1; }
+  .pagination a {
+    text-decoration: none;
+    color: black;
+    border: 1px solid black;
+    border-radius: 6px; }
+    .pagination a:hover, .pagination a:focus {
+      color: white;
+      background-color: #2b6842; }
   .pagination .disabled {
     display: none; }
   .pagination .current {
@@ -123,16 +138,3 @@ body {
     color: white;
     border-radius: 6px;
     border: 1px solid black; }
-  .pagination a {
-    text-decoration: none;
-    color: black;
-    border: 1px solid black;
-    border-radius: 6px; }
-    .pagination a:hover, .pagination a:focus {
-      color: white;
-      background-color: #2b6842; }
-
-footer {
-  background: url("images/pool_table.png");
-  border-top: 5px solid #3d352a;
-  height: 50px; }
