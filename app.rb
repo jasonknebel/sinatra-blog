@@ -38,16 +38,24 @@ end
 helpers do
 
   def protected!
-    unless authorized?
-      response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
-      throw(:halt, [401, "Not authorized\n"])
+    unless authorized? 
+
+      redirect '/log_in'
+
+      # response['WWW-Authenticate'] = %(Basic realm="Restricted Area")
+      # throw(:halt, [401, "Not authorized\n"])
+      
     end
   end
 
+  def auth
+    @auth ||= Rack::Auth::Basic::Request.new(request.env)
+  end
+ 
+
   def authorized?
-    @auth ||=  Rack::Auth::Basic::Request.new(request.env)
-    @auth.provided? && @auth.basic? && @auth.credentials && 
-      @auth.credentials == ['admin', 'admin']
+    auth.provided? && auth.basic? && auth.credentials && 
+      auth.credentials == ['admin', 'admin']
   end
 
   def markdown(text)
@@ -69,6 +77,17 @@ get '/admin' do
   protected!
   @posts = Post.order('published_at DESC, created_at DESC').page(params[:page]).per_page(10)
   slim :admin
+end
+
+#-----Log_In-----#
+
+get '/log_in' do 
+  slim :login 
+end
+
+post '/log_in' do
+  # @auth.credentials = ['admin', params[:pass]]
+  protected!
 end
 
 #-----New_Post-----#
