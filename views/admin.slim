@@ -1,6 +1,6 @@
 .admin
   .top
-    h2 Look at all the posts!
+    h2 Ermahgerd look at all the posts!
 
     .new
       form action='/admin/new' method='POST'
@@ -18,19 +18,17 @@
           td
             p= post.title
           td
-            p== markdown(post.content)
+            p== truncate(markdown(post.content), post.id, 300)
           td
             -if post.published_at?
               p #{post.published_at}
-              /extra td since the admin cannot edit published posts
-              td
             -else
               form action='/admin/publish/#{post.id}' method='POST'
                 input type="hidden" name="_method" value="PUT"
                 input.button type='submit' value='Publish'
-              td
-                form action='/admin/edit/#{post.id}' method='POST'
-                  input.button type='submit' value='Edit Me'
+          td
+            form action='/admin/edit/#{post.id}' method='POST'
+              input.button type='submit' value='Edit Me'
 
           td
             form action='/admin/#{post.id}' method='POST'

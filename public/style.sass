@@ -1,13 +1,15 @@
-$header_image:      url('images/pool_table.png')
-$bordercolor:       rgb(61,53,42)    //dark brown
-$post_bg_color:     rgb(248,248,255) //off white
-$button_face:       rgb(176,223,193) //light green
-$button_face_hover: rgb(43, 104, 66) //dark green
+@import 'mixins'
+
+$bordercolor:       rgb(61,53,42)    // dark brown
+$post_bg_color:     rgb(248,248,255) // off white
+$button_face:       rgb(176,223,193) // light green
+$button_face_hover: rgb(43, 104, 66) // dark green
 
 body
   font-family: Helvetica
   background: url('images/bedge_grunge.png')
   margin: 0
+  -webkit-font-smoothing: antialiased
 
 .container
   max-width: 960px
@@ -19,11 +21,11 @@ body
   min-height: 650px
 
 header
-  background: $header_image
+  +gradient(#303030, #000)
   height: 32px
   margin: 0
   padding: 18px 0 0 0 
-  border-bottom: 5px solid $bordercolor
+
   .left
     display: block
     float: left
@@ -38,17 +40,17 @@ header
       text-decoration: underline
 
 footer
-  background: $header_image
-  border-top: 5px solid $bordercolor
+  +gradient(#303030, #000)
   height: 50px
 
-//--------------------Blog_Home-------------------//
+// -------------------- Blog_Home ------------------- //
 
 .post
   background-color: $post_bg_color
   margin: 0 0 30px 0 
   padding: 5px
   border-radius: 7px
+
   .title
     h2
       margin: 0
@@ -62,79 +64,110 @@ footer
   .content
     padding: 0 20px 0 20px
     font-size: 1.1em
+    a 
+      font-style: italic
 
-//--------------------Admin-------------------//
+// -------------------- Admin ------------------- //
+
+=admin-button
+  +gradient(#6eef6e, #5aba5a)
+  border-radius: 5px
+  padding: 5px
+  text-shadow: 0 1px 1px rgba(#000,.3)
+  border: 1px solid darken(#5aba5a, 10%)
+  cursor: pointer
+  padding: 10px 25px
+  color: #fff
+  +prefix(transition, all .25s ease)
+
+  &:hover
+    background-position: 0 -15px
+
+  &:active
+    +prefix(box-shadow, inset 0 1px 7px rgba(0,0,0,.3))
+    text-shadow: 0 -1px 1px rgba(#000,.3)
 
 .admin
+
   input.button
-    background-color: $button_face
-    border-radius: 5px
-    padding: 5px
-    &:hover
-      background-color: $button_face_hover
+    +admin-button
 
   .top 
     display: block
     overflow: auto
     margin: 10px 0 10px 0
+
     h2
       float: left
+
     .new
       float: right
+
       input.button
-        font-size: 1.3em
         margin: 15px 7px 0 0 
-        width: 150px
-        border: 2px solid $bordercolor
+        font-size: 18px
 
   .list_all
+
     table
       margin-bottom: 30px
+
       tr 
         background-color: $post_bg_color
+
     input.button
       font-size: .7em
-      width: 70px
-      border: 1px solid $bordercolor
 
-//--------------------New/Edit_Post-------------------//
+// -------------------- New/Edit_Post ------------------- //
 
 .new_edit_post
+
   h1
     border-bottom: 2px solid $bordercolor
+
   label
     font-size: 1.2em
+    margin-bottom: 5px
+    display: block
+
+  .title input, .content textarea
+    border-radius: 5px
+    -webkit-font-smoothing: antialiased
+    display: block
+    padding: 10px
+    border: 1px solid #ccc
+    width: 928px
+    margin-left: 4px
+    color: #444
+
   .title
+    margin-bottom: 20px
+
     input
-      border: 1px solid $bordercolor
       font-size: 1.3em
-      display: block
-      padding: 5px
-      width: 948px
+      
   .content
+
     textarea
-      border: 1px solid $bordercolor
-      font-size: 1.2em
+      font-size: 1em
       height: 380px
-      display: block
-      width: 954px
-      max-width: 954px
+
   .submit, .back
+
     input.button
+      +admin-button
       float: right
-      background-color: $button_face
-      border-radius: 5px
-      padding: 5px
       font-size: 1.3em
       margin: 30px 0 30px 0 
-      width: 150px
-      border: 2px solid $bordercolor
-      &:hover
-        background-color: $button_face_hover
+
   .back
     float: left
 
-//--------------------Pagination_Bar-------------------//
+    input.button
+      +gradient(#d63c3c, #9e2727)
+      border: 1px solid darken(#9e2727, 10%)
+
+// -------------------- Pagination_Bar ------------------- //
 
 .pagination
   $page_bradius: 6px

@@ -1,3 +1,4 @@
-/public/.sass-cache
+.sass-cache
 deploy.sh
 Guardfile
+blog_development.sqlite3

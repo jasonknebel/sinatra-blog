@@ -4,6 +4,7 @@ require 'slim'
 require 'will_paginate'
 require 'will_paginate/active_record'
 require 'redcarpet' #markdown
+require 'uri'
 
 #--------------------Setup--------------------#
 
@@ -11,27 +12,29 @@ class Post < ActiveRecord::Base
 end
 
 use Rack::MethodOverride
-  #needed for more than just GET/POST requests
 
 configure :development do
-  set :database, 'postgres://jason@localhost/blog_dev'
+  set :database, 'sqlite3:///db/blog_development.sqlite3'
   require 'rack-livereload'
   require 'sinatra/reloader'
   use Rack::LiveReload
 end
 
+
 configure :production do
+  db = URI.parse(ENV['HEROKU_POSTGRESQL_JADE_URL'])
+
   ActiveRecord::Base.establish_connection(
-    :adapter  => 'postgresql',
-    :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
-    :port     => '5432',
-    :username => 'wuqpwjisgdpowf',
-    :password => '32MaQxPw9KuirG1lLyQheJbfBS',
-    :database => 'dem3n9jlpj5976',
+    :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+    :host     => db.host,
+    :port     => db.port,
+    :username => db.user,
+    :password => db.password,
+    :database => db.path[1..-1],
     :encoding => 'unicode',
-    :pool     => '5'
+    :pool => 5
   )
-end 
+end
 
 #--------------------Helpers--------------------#
 
@@ -54,11 +57,14 @@ helpers do
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text)
   end
 
-
   def seo_title(text)
     text.downcase.gsub(/[^a-z0-9]+/i, '-')
   end
 
+  def truncate(text, post_id, max_length)
+    address = "...<a href='/show/" + post_id.to_s + "'>[show full post]</a>"
+    text.length > max_length ? text[0..max_length] + address : text
+  end
 
 end
 
@@ -67,6 +73,11 @@ end
 get '/' do 
   @posts = Post.where('published_at IS NOT NULL').order('published_at DESC').page(params[:page]).per_page(5)
   slim :index 
+end
+
+get '/show/:id' do
+  @post = Post.find(params[:id])
+  slim :show
 end
 
 #----------Admin----------#

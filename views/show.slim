@@ -4,6 +4,7 @@ h3 welcome to my blog
   .title
     h2= @post.title
   .date
-    p= @post.published_at.to_date
+    -if @post.published_at?
+      p= @post.published_at.to_date
   .content
     p== markdown(@post.content)
