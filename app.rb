@@ -16,8 +16,10 @@ use Rack::MethodOverride
 # the prouction config block and leave this line
 database_url = ENV['DATABASE_URL'] || 'sqlite3:///db/blog_development.sqlite3'
 
+set :database, database_url
+
 configure :development do
-  set :database, database_url
+  # set :database, database_url
   require 'rack-livereload'
   require 'sinatra/reloader'
   use Rack::LiveReload
@@ -25,18 +27,18 @@ end
 
 # you can almose definitely delete this and pull the set :database line
 # out of the dev block
-configure :production do
-  ActiveRecord::Base.establish_connection(
-    :adapter  => 'postgresql',
-    :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
-    :port     => '5432',
-    :username => 'wuqpwjisgdpowf',
-    :password => '32MaQxPw9KuirG1lLyQheJbfBS',
-    :database => 'dem3n9jlpj5976',
-    :encoding => 'unicode',
-    :pool     => '5'
-  )
-end 
+# configure :production do
+#   ActiveRecord::Base.establish_connection(
+#     :adapter  => 'postgresql',
+#     :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
+#     :port     => '5432',
+#     :username => 'wuqpwjisgdpowf',
+#     :password => '32MaQxPw9KuirG1lLyQheJbfBS',
+#     :database => 'dem3n9jlpj5976',
+#     :encoding => 'unicode',
+#     :pool     => '5'
+#   )
+# end 
 
 #--------------------Helpers--------------------#
 
