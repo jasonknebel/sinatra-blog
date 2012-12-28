@@ -22,15 +22,13 @@
           td
             -if post.published_at?
               p #{post.published_at}
-              /extra td since the admin cannot edit published posts
-              td
             -else
               form action='/admin/publish/#{post.id}' method='POST'
                 input type="hidden" name="_method" value="PUT"
                 input.button type='submit' value='Publish'
-              td
-                form action='/admin/edit/#{post.id}' method='POST'
-                  input.button type='submit' value='Edit Me'
+          td
+            form action='/admin/edit/#{post.id}' method='POST'
+              input.button type='submit' value='Edit Me'
 
           td
             form action='/admin/#{post.id}' method='POST'
