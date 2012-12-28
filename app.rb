@@ -4,6 +4,7 @@ require 'slim'
 require 'will_paginate'
 require 'will_paginate/active_record'
 require 'redcarpet' #markdown
+require 'uri'
 
 #--------------------Setup--------------------#
 
@@ -28,13 +29,17 @@ end
 # you can almose definitely delete this and pull the set :database line
 # out of the dev block
 configure :production do
+  
+  url = 'postgres://wuqpwjisgdpowf:32MaQxPw9KuirG1lLyQheJbfBS@ec2-54-243-224-187.compute-1.amazonaws.com:5432/dem3n9jlpj5976'
+  db = URI.parse(url)
+
   ActiveRecord::Base.establish_connection(
     :adapter  => 'postgresql',
-    :host     => 'ec2-54-243-224-187.compute-1.amazonaws.com',
-    :port     => '5432',
-    :username => 'wuqpwjisgdpowf',
-    :password => '32MaQxPw9KuirG1lLyQheJbfBS',
-    :database => 'dem3n9jlpj5976',
+    :host     => db.host,
+    :port     => db.port,
+    :username => db.user,
+    :password => db.password,
+    :database => db.path[1..-1],
     :encoding => 'unicode',
     :pool     => '5'
   )
@@ -64,6 +69,15 @@ helpers do
 end
 
 #--------------------Routes--------------------#
+
+get '/url' do
+  @url = ENV['DATABASE_URL'] 
+  
+  @db = URI.parse(@url)
+
+  "#{@db.host}"
+end
+
 
 get '/' do 
   @posts = Post.where('published_at IS NOT NULL').order('published_at DESC').page(params[:page]).per_page(5)
