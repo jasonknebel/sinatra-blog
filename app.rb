@@ -57,6 +57,11 @@ helpers do
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text)
   end
 
+  def truncate(text)
+    max_length = 300
+    text.length > max_length ? text[0..max_length] + '...' : text
+  end
+
 end
 
 #--------------------Routes--------------------#
