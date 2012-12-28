@@ -18,7 +18,7 @@
           td
             p= post.title
           td
-            p== markdown(post.content)
+            p== markdown(post.content[0..300])
           td
             -if post.published_at?
               p #{post.published_at}
