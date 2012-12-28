@@ -72,10 +72,7 @@ end
 
 get '/url' do
   @url = ENV['DATABASE_URL'] 
-  
-  @db = URI.parse(@url)
-
-  "#{@db.host}"
+  "#{@url}"
 end
 
 
