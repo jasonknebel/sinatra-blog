@@ -71,8 +71,8 @@ end
 #--------------------Routes--------------------#
 
 get '/url' do
-  @url = ENV['DATABASE_URL'] 
-  "#{@url}"
+  @db = URI.parse(ENV['DATABASE_URL']
+  "#{@db}"
 end
 
 
