@@ -63,6 +63,8 @@ footer {
   .post .content {
     padding: 0 20px 0 20px;
     font-size: 1.1em; }
+    .post .content a {
+      font-style: italic; }
 
 .admin input.button {
   background-color: #5aba5a;

@@ -57,9 +57,9 @@ helpers do
     Redcarpet::Markdown.new(Redcarpet::Render::HTML).render(text)
   end
 
-  def truncate(text)
-    max_length = 300
-    text.length > max_length ? text[0..max_length] + '...' : text
+  def truncate(text, post_id, max_length)
+    address = "...<a href='/show/" + post_id.to_s + "'>[show full post]</a>"
+    text.length > max_length ? text[0..max_length] + address : text
   end
 
 end
@@ -69,6 +69,11 @@ end
 get '/' do 
   @posts = Post.where('published_at IS NOT NULL').order('published_at DESC').page(params[:page]).per_page(5)
   slim :index 
+end
+
+get '/show/:id' do
+  @post = Post.find(params[:id])
+  slim :show
 end
 
 #----------Admin----------#

@@ -7,6 +7,6 @@ h3 welcome to my blog
     .date
       p= post.published_at.to_date
     .content
-      p== markdown(post.content)
+      p== truncate(markdown(post.content), post.id, 500)
 
 p== will_paginate @posts 
