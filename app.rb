@@ -61,8 +61,8 @@ helpers do
     text.downcase.gsub(/[^a-z0-9]+/i, '-')
   end
 
-  def truncate(text, post_id, max_length)
-    address = "...<a href='/show/" + post_id.to_s + "'>[show full post]</a>"
+  def truncate(text, post_url, max_length)
+    address = "...<a href='/show/#{post_url}'>[show full post]</a>"
     text.length > max_length ? text[0..max_length] + address : text
   end
 
@@ -75,8 +75,8 @@ get '/' do
   slim :index 
 end
 
-get '/show/:id' do
-  @post = Post.find(params[:id])
+get '/show/:url' do
+  @post = Post.find_by_url(params[:url])
   slim :show
 end
 
@@ -98,7 +98,8 @@ put '/admin/new' do
   if (params[:title].empty? || params[:content].empty?)
     "You didn't enter something."
   else
-    Post.create( title: params[:title], content: params[:content])
+    Post.create( title: params[:title], content: params[:content],
+      url: seo_title(params[:title].to_s))
     redirect '/admin'
   end
 end
@@ -112,7 +113,7 @@ end
 
 put '/admin/edit/:id' do
   Post.find(params[:id]).update_attributes(title: params[:edit_title], 
-    content: params[:edit_content])
+    content: params[:edit_content], url: seo_title(params[:edit_title].to_s))
   redirect '/admin'
 end
 

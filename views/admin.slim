@@ -18,7 +18,7 @@
           td
             p= post.title
           td
-            p== truncate(markdown(post.content), post.id, 300)
+            p== truncate(markdown(post.content), post.url, 300)
           td
             -if post.published_at?
               p #{post.published_at}
