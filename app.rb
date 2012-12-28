@@ -4,7 +4,7 @@ require 'slim'
 require 'will_paginate'
 require 'will_paginate/active_record'
 require 'redcarpet' #markdown
-require "sinatra/config_file"
+require 'uri'
 
 #--------------------Setup--------------------#
 
@@ -19,7 +19,18 @@ configure :development do
   use Rack::LiveReload
 end
 
-config_file '/config.yml'
+db = URI.parse(ENV['HEROKU_POSTGRESQL_JADE_URL'])
+
+ActiveRecord::Base.establish_connection(
+  :adapter  => db.scheme == 'postgres' ? 'postgresql' : db.scheme,
+  :host     => db.host,
+  :port     => db.port,
+  :username => db.user,
+  :password => db.password,
+  :database => db.path[1..-1],
+  :encoding => 'unicode',
+  :pool => 5
+)
 
 #--------------------Helpers--------------------#
 
