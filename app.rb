@@ -4,7 +4,7 @@ require 'slim'
 require 'will_paginate'
 require 'will_paginate/active_record'
 require 'redcarpet' #markdown
-require 'uri'
+require "sinatra/config_file"
 
 #--------------------Setup--------------------#
 
@@ -13,37 +13,13 @@ end
 
 use Rack::MethodOverride
 
-# if you use heroku's (free) database, you should be able to remove
-# the prouction config block and leave this line
-database_url = ENV['DATABASE_URL'] || 'sqlite3:///db/blog_development.sqlite3'
-
-#set :database, database_url
-
 configure :development do
-  set :database, database_url
   require 'rack-livereload'
   require 'sinatra/reloader'
   use Rack::LiveReload
 end
 
-# you can almose definitely delete this and pull the set :database line
-# out of the dev block
-configure :production do
-  
-  url = 'postgres://wuqpwjisgdpowf:32MaQxPw9KuirG1lLyQheJbfBS@ec2-54-243-224-187.compute-1.amazonaws.com:5432/dem3n9jlpj5976'
-  db = URI.parse(url)
-
-  ActiveRecord::Base.establish_connection(
-    :adapter  => 'postgresql',
-    :host     => db.host,
-    :port     => db.port,
-    :username => db.user,
-    :password => db.password,
-    :database => db.path[1..-1],
-    :encoding => 'unicode',
-    :pool     => '5'
-  )
-end 
+config_file '/config.yml'
 
 #--------------------Helpers--------------------#
 
@@ -69,12 +45,6 @@ helpers do
 end
 
 #--------------------Routes--------------------#
-
-get '/url' do
-  @db = URI.parse(ENV['DATABASE_URL'])
-  "#{@db}"
-end
-
 
 get '/' do 
   @posts = Post.where('published_at IS NOT NULL').order('published_at DESC').page(params[:page]).per_page(5)

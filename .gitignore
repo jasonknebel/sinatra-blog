@@ -2,3 +2,4 @@
 deploy.sh
 Guardfile
 blog_development.sqlite3
+config.yml
