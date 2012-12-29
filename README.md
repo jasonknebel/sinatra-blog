@@ -1,4 +1,4 @@
-Name Here
+Yet another blog
 ---------
 
 A simple blog application using Sinatra
@@ -6,8 +6,8 @@ A simple blog application using Sinatra
 Setup
 -----
 
-- clone the repo down
-- run `bundle`
-- run `rake db:create`
+- run `git clone https://github.com/jasonknebel/blog.git`
+- run `cd blog`
+- run `bundle install`
 - run `rake db:migrate`
-- start the app with `rackup`
+- start the app with `rackup config.ru`
